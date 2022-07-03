@@ -30,7 +30,7 @@
             $_POST['keyword2'] = htmlspecialchars($_POST['keyword2'], ENT_QUOTES);
             echo "Résultat(s) pour le mot-clé : ".$_POST['keyword2'];
         } 
-?>
+        ?>
 
         <h2>Non sécurisé</h1>
         <form method="post" action="">
