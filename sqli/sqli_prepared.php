@@ -28,6 +28,7 @@
             }
 
             try {
+                // Ecriture de la requête SQL avec des paramètres nommés
                 $query = "
                 SELECT u.login, a.type, a.amount
                 FROM accounts AS a LEFT JOIN users AS u ON a.id_users = u.id
@@ -36,15 +37,20 @@
                 echo '<h2>La requête SQL préparée</h2>';
                 var_dump($query);
 
+                // Préparation de la requête
                 $curseur = $pdo->prepare($query);
 
+                // Bind des paramètres avec des valeurs typées
                 $curseur->bindValue(':login', $_POST['login'], PDO::PARAM_STR);
                 $curseur->bindValue(':password', $_POST['password'], PDO::PARAM_STR);
             
+                // Exécution de la requête
                 $curseur->execute();
+
+                // Récupération du résultat
                 $data = $curseur->fetchAll();
 
-                echo '<h2>La requête SQL avec les binds</h2>';
+                echo '<h2>La requête SQL préparée avec les binds</h2>';
                 echo '<pre>';
                 $curseur->debugDumpParams();
                 echo '</pre>';

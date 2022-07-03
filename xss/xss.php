@@ -8,21 +8,39 @@
         </script>    
     </head>
     <body>
-        <h1>La faille XSS</h1>
+        <h1>La faille XSS : Cross-site scripting</h1>
+        <h2>X = cross, pour ne pas confondre avec CSS</h2>
         <p>
-            <a href="https://zestedesavoir.com/articles/232/les-failles-xss/">Explications</a>
+            <a href="https://zestedesavoir.com/articles/232/les-failles-xss/" target="_blank">Explications de la démo</a>
+        </p>
+        <p>
+            <a href="https://fr.wikipedia.org/wiki/Cross-site_scripting" target="_blank">Wikipedia</a>
         </p>
 
         <?php
-        if(!empty($_POST['keyword']))
+        if(isset($_POST['keyword']) && !empty($_POST['keyword']))
         {
-            //$_POST['keyword'] = htmlspecialchars($_POST['keyword'], ENT_QUOTES);
+            echo '<h2>Site non sécurisé</h2>';
             echo "Résultat(s) pour le mot-clé : ".$_POST['keyword'];
         } 
-        ?>
 
+        if(isset($_POST['keyword2']) && !empty($_POST['keyword2']))
+        {
+            echo '<h2>Site sécurisé</h2>';
+            $_POST['keyword2'] = htmlspecialchars($_POST['keyword2'], ENT_QUOTES);
+            echo "Résultat(s) pour le mot-clé : ".$_POST['keyword2'];
+        } 
+?>
+
+        <h2>Non sécurisé</h1>
         <form method="post" action="">
             <input type="text" name="keyword" />
+            <input type="submit" value="Rechercher" />
+        </form>
+
+        <h2>Sécurisé</h1>
+        <form method="post" action="">
+            <input type="text" name="keyword2" />
             <input type="submit" value="Rechercher" />
         </form>
 

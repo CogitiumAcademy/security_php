@@ -6,9 +6,12 @@
         <meta charset="utf-8" />
     </head>
     <body>
-        <h1>La faille CSRF</h1>
+        <h1>La faille CSRF : Cross-Site Request Forgery</h1>
         <p>
-            <a href="https://www.leblogduhacker.fr/faille-csrf-explications-contre-mesures/">Explications</a>
+            <a href="https://www.leblogduhacker.fr/faille-csrf-explications-contre-mesures/" target="_blank">Explications de la démo</a>
+        </p>
+        <p>
+            <a href="https://fr.wikipedia.org/wiki/Cross-site_request_forgery" target="_blank">Wikipedia</a>
         </p>
 
         <?php
